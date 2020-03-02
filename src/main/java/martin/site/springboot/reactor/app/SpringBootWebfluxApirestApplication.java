@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 
 import martin.site.springboot.reactor.app.models.service.CategoriaService;
@@ -16,6 +17,7 @@ import martin.site.springboot.reactor.app.models.documents.Categoria;
 import martin.site.springboot.reactor.app.models.documents.Producto;
 import reactor.core.publisher.Flux;
 
+@EnableEurekaClient
 @SpringBootApplication
 public class SpringBootWebfluxApirestApplication implements CommandLineRunner{
 

@@ -1,5 +1,6 @@
 package martin.site.springboot.reactor.app.handler;
 
+import java.io.File;
 import java.net.URI;
 import java.util.Date;
 import java.util.UUID;
@@ -34,7 +35,7 @@ public class ProductoHandler {
 	@Autowired
 	private Validator validator;
 	
-	/*public Mono<ServerResponse> crearConFoto(ServerRequest request){
+	public Mono<ServerResponse> crearConFoto(ServerRequest request){
 		Mono<Producto> producto = request.multipartData().map(multipart -> {
 			FormFieldPart nombre = (FormFieldPart) multipart.toSingleValueMap().get("nombre");
 			FormFieldPart precio = (FormFieldPart) multipart.toSingleValueMap().get("precio");
@@ -78,7 +79,7 @@ public class ProductoHandler {
 						.contentType(MediaType.APPLICATION_JSON)
 						.bodyValue(p))
 				.switchIfEmpty(ServerResponse.notFound().build());
-	} */
+	}
 	
 	public Mono<ServerResponse> listar(ServerRequest request) {
 		return ServerResponse.ok()

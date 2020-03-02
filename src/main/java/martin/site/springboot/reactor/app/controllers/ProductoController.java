@@ -41,7 +41,7 @@ public class ProductoController {
 	@Value("${config.uploads.path}")
 	private String path;
 	
-	@PostMapping("/v2")
+	@PostMapping
 	public Mono<ResponseEntity<Producto>> crearConFoto(Producto producto, @RequestPart FilePart file) {
 		if(producto.getCreateAT() == null) {
 			producto.setCreateAT(new Date());
@@ -58,7 +58,7 @@ public class ProductoController {
 	}
 	
 
-	@PostMapping("upload/{id}")
+	@PostMapping("/upload/{id}")
 	public Mono<ResponseEntity<Producto>> upload(@PathVariable String id, @RequestPart FilePart file) {
 		return service.findById(id).flatMap(p -> {
 			p.setFoto(UUID.randomUUID().toString() + "-" + file.filename()
@@ -88,7 +88,7 @@ public class ProductoController {
 				.defaultIfEmpty(ResponseEntity.notFound().build());
 	}
 	
-	@PostMapping()
+	@PostMapping("/v2")
 	public Mono<ResponseEntity<Map<String, Object>>> crear(@Valid @RequestBody Mono<Producto> monoProducto) {
 		Map<String, Object> respuesta = new HashMap<String, Object>();
 		return monoProducto.flatMap(producto -> {
